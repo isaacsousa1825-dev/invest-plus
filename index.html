@@ -3,101 +3,178 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0b7653">
+<meta name="theme-color" content="#050706">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Invest+ Offline</title>
+<title>Invest+ • Seu dinheiro em números</title>
 <style>
-:root{--bg:#f5f7f6;--card:#fff;--text:#17221d;--muted:#718079;--line:#e3eae6;--g:#0b7954;--g2:#075b42;--mint:#e2f3eb;--shadow:0 8px 25px rgba(18,53,40,.07)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--text);-webkit-tap-highlight-color:transparent}.app{width:100%;max-width:520px;margin:auto;min-height:100vh;padding:16px 15px 92px}
-header{display:flex;align-items:center;justify-content:space-between;padding:5px 2px 18px}.brand{display:flex;align-items:center;gap:10px}.logo{width:42px;height:42px;border-radius:14px;background:var(--g);color:#fff;display:grid;place-items:center;font-weight:900;font-size:21px}.brand b{font-size:19px}.brand small{display:block;color:var(--muted);font-size:10px}.headbtn{width:40px;height:40px;border:1px solid var(--line);border-radius:13px;background:#fff;font-size:18px}
-.view{display:none}.view.active{display:block}.title{font-size:30px;line-height:1.05;letter-spacing:-1px;margin:2px 0 7px}.sub{font-size:14px;color:var(--muted);margin:0 0 18px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:17px;margin-bottom:12px;box-shadow:var(--shadow)}h2{font-size:17px;margin:0 0 14px}h3{font-size:14px;margin:0 0 9px}
-.field{margin-bottom:12px}.field label{display:block;color:#4f5d56;font-size:11px;font-weight:800;margin-bottom:6px}.input{height:51px;border-radius:14px;background:#f0f3f1;display:flex;align-items:center;padding:0 12px}.input b{color:var(--g);margin-right:7px}.input input,.input select{width:100%;min-width:0;border:0;outline:0;background:transparent;font-size:16px;font-weight:750;color:var(--text)}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.investtypes{display:grid;grid-template-columns:1fr 1fr;gap:8px}.type{border:1px solid var(--line);background:#fff;border-radius:15px;padding:12px;text-align:left;cursor:pointer}.type strong{display:block;font-size:14px}.type small{color:var(--muted);font-size:10px}.type.active{border-color:#8bc9ad;background:var(--mint)}.type.active strong{color:var(--g)}
-.segment{display:grid;grid-template-columns:1fr 1fr;background:#edf1ef;border-radius:13px;padding:4px}.segment button{border:0;background:transparent;padding:10px;border-radius:10px;font-weight:750;color:var(--muted)}.segment button.active{background:#fff;color:var(--g);box-shadow:0 2px 7px #0001}
-.primary{width:100%;height:55px;border:0;border-radius:17px;background:linear-gradient(135deg,var(--g),var(--g2));color:white;font-size:16px;font-weight:850;box-shadow:0 8px 18px #0b79542c}.secondary{width:100%;height:48px;border:1px solid var(--line);border-radius:15px;background:#fff;font-weight:800;color:var(--g);margin-top:9px}
-.result{background:linear-gradient(145deg,#10845c,#075c42);border-radius:24px;padding:20px;color:white;margin-bottom:12px;box-shadow:0 14px 30px #0b79542e}.result small{opacity:.8}.result .big{font-size:34px;font-weight:900;letter-spacing:-1px;margin:5px 0 16px}.stats{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #ffffff3b;padding-top:13px}.stats b{display:block;font-size:17px;margin-top:3px}
-.kpis{display:grid;grid-template-columns:1fr 1fr;gap:9px}.kpi{background:#fff;border:1px solid var(--line);border-radius:17px;padding:14px}.kpi small{display:block;color:var(--muted);font-size:10px;margin-bottom:5px}.kpi strong{font-size:17px}.green{color:var(--g)}
-.chart{height:210px}.chart canvas{width:100%;height:100%}.legend{display:flex;gap:14px;font-size:11px;color:var(--muted)}.dot{width:8px;height:8px;background:var(--g);border-radius:50%;display:inline-block;margin-right:4px}.dot2{background:#91d5ae}
-.bar{height:13px;border-radius:99px;overflow:hidden;background:#e8eeea;display:flex;margin:12px 0}.bar i:first-child{background:#0b7250}.bar i:last-child{background:#91d5ae}.split{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}.split b{color:var(--text)}
-.goalbox{background:var(--mint);border:1px solid #cce6d9;border-radius:17px;padding:15px}.goalbox .big{font-size:25px;font-weight:900;color:var(--g)}.progress{height:10px;background:#cfe5d9;border-radius:99px;overflow:hidden;margin:10px 0}.progress i{display:block;height:100%;width:100%;background:var(--g)}
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:9px}.compare>div{padding:14px;border:1px solid var(--line);border-radius:17px}.compare strong{font-size:18px}.note{font-size:11px;line-height:1.45;color:var(--muted);background:#f8faf9;border-radius:13px;padding:11px;margin-top:10px}
-.bottom{position:fixed;z-index:5;left:50%;bottom:0;transform:translateX(-50%);width:min(520px,100%);background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:8px 7px max(8px,env(safe-area-inset-bottom));box-shadow:0 -5px 20px #163c2b0c}.nav{border:0;background:transparent;color:#8a948f;font-size:10px;font-weight:750;padding:6px 2px}.nav span{display:block;font-size:19px;margin-bottom:2px}.nav.active{color:var(--g)}
-@media(max-width:390px){.title{font-size:27px}.row{grid-template-columns:1fr}.result .big{font-size:30px}}
+:root{
+ --bg:#f5f7f6;--surface:#fff;--surface2:#eef2f0;--text:#15201b;--muted:#77827d;
+ --line:#dfe7e2;--green:#18c77b;--green2:#078b57;--greenSoft:#e3f8ef;
+ --blue:#4ba3ff;--gold:#f5b83d;--shadow:0 12px 32px rgba(18,45,33,.08)
+}
+body.amoled{
+ --bg:#000;--surface:#090c0b;--surface2:#111513;--text:#f2f7f4;--muted:#87938d;
+ --line:#1e2521;--green:#19dc86;--green2:#07985e;--greenSoft:#09251a;
+ --shadow:0 14px 36px rgba(0,0,0,.4)
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:background .25s,color .25s}
+button,input{font:inherit}
+button{cursor:pointer}
+.app{max-width:560px;margin:auto;min-height:100vh;padding:13px 15px 104px}
+header{display:flex;align-items:center;justify-content:space-between;padding:4px 0 18px}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:42px;height:42px;border-radius:14px;background:var(--green);color:#001c11;display:grid;place-items:center;font-size:21px;font-weight:950}
+.brand b{font-size:19px;letter-spacing:-.5px}.brand small{display:block;color:var(--muted);font-size:10px;margin-top:1px}
+.actions{display:flex;gap:7px}.icon{width:41px;height:41px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--text)}
+.view{display:none}.view.active{display:block;animation:appear .28s ease}
+@keyframes appear{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.hero h1{font-size:31px;line-height:1.02;letter-spacing:-1.5px;margin:5px 0 7px}.hero p{font-size:13px;color:var(--muted);margin:0 0 18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:17px;margin-bottom:12px;box-shadow:var(--shadow)}
+.card h2{font-size:15px;letter-spacing:-.2px;margin:0 0 13px}.card h3{font-size:12px;margin:0 0 8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.field{margin-bottom:12px}.field label{display:block;font-size:9px;font-weight:850;letter-spacing:.35px;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.input{height:50px;display:flex;align-items:center;padding:0 12px;border:1px solid var(--line);border-radius:15px;background:var(--surface2)}
+.input b{color:var(--green);font-size:13px;margin-right:7px}.input input{min-width:0;width:100%;border:0;outline:0;background:transparent;color:var(--text);font-size:16px;font-weight:780}
+.types{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.type{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:16px;padding:12px;text-align:left;transition:.2s}
+.type strong{display:block;font-size:12px}.type small{display:block;color:var(--muted);font-size:9px;margin-top:4px}.type.active{border-color:var(--green);background:var(--greenSoft)}.type.active strong{color:var(--green)}
+.segment{display:grid;grid-template-columns:1fr 1fr;padding:4px;border-radius:13px;background:var(--surface2)}.segment button{border:0;background:transparent;color:var(--muted);padding:9px;border-radius:10px;font-size:11px;font-weight:850}.segment button.active{background:var(--surface);color:var(--green);box-shadow:0 2px 8px #0001}
+.primary{height:54px;width:100%;border:0;border-radius:16px;background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;font-weight:900;font-size:15px;box-shadow:0 10px 24px #0abf7330}
+.secondary{height:45px;width:100%;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--green);font-size:12px;font-weight:850;margin-top:8px}
+.hidden{display:none!important}.note{padding:11px;border-radius:13px;background:var(--greenSoft);color:var(--muted);font-size:10px;line-height:1.45;margin-top:3px}
+.resultHero{background:linear-gradient(145deg,var(--green),var(--green2));color:#fff;border-radius:25px;padding:21px;margin-bottom:11px;box-shadow:0 16px 34px #08a66d30}
+.resultHero small{opacity:.78;font-size:10px}.amount{font-size:34px;line-height:1.05;font-weight:950;letter-spacing:-1.4px;margin:5px 0 17px}
+.stats{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #ffffff42;padding-top:12px}.stats small{display:block}.stats strong{display:block;font-size:15px;margin-top:3px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:9px}.kpi{border:1px solid var(--line);background:var(--surface);border-radius:17px;padding:13px}.kpi small{display:block;color:var(--muted);font-size:9px;margin-bottom:5px}.kpi strong{font-size:15px}.green{color:var(--green)}
+.chart{height:225px}.chart canvas{width:100%;height:100%}.legend{display:flex;gap:14px;color:var(--muted);font-size:9px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:4px}.dot.blue{background:var(--blue)}.dot.gold{background:var(--gold)}
+.bar{height:13px;border-radius:99px;overflow:hidden;background:var(--surface2);display:flex;margin:12px 0}.bar .capital{background:var(--blue)}.bar .gain{background:var(--green)}
+.split{display:flex;justify-content:space-between;color:var(--muted);font-size:9px}.split strong{color:var(--text)}
+.table{width:100%;border-collapse:collapse;font-size:10px}.table th,.table td{padding:9px 3px;border-bottom:1px solid var(--line);text-align:right}.table th:first-child,.table td:first-child{text-align:left}
+.toast{position:fixed;z-index:50;left:50%;bottom:82px;max-width:90%;transform:translate(-50%,18px);opacity:0;background:#111;color:#fff;border-radius:13px;padding:10px 14px;font-size:11px;font-weight:800;transition:.22s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+.loader{display:none;position:fixed;inset:0;z-index:60;background:#0008;backdrop-filter:blur(6px);place-items:center}.loader.show{display:grid}.calcbox{width:185px;padding:24px;text-align:center;border-radius:22px;background:var(--surface);color:var(--text)}.spinner{width:43px;height:43px;border:4px solid var(--line);border-top-color:var(--green);border-radius:50%;margin:auto;animation:spin .7s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.calcbox b{display:block;font-size:12px;margin-top:11px}
+.bottom{position:fixed;z-index:40;left:50%;bottom:0;transform:translateX(-50%);width:min(560px,100%);display:grid;grid-template-columns:repeat(5,1fr);padding:7px 6px max(7px,env(safe-area-inset-bottom));background:color-mix(in srgb,var(--surface),transparent 4%);backdrop-filter:blur(15px);border-top:1px solid var(--line)}
+.nav{border:0;background:transparent;color:var(--muted);font-size:8px;font-weight:850;padding:4px}.nav span{display:block;font-size:18px;line-height:20px;margin-bottom:2px}.nav.active{color:var(--green)}
+.empty{text-align:center;color:var(--muted);font-size:12px;padding:16px 0}
+@media(max-width:390px){.hero h1{font-size:27px}.grid2{grid-template-columns:1fr}.amount{font-size:30px}}
 </style>
 </head>
 <body>
 <div class="app">
-<header><div class="brand"><div class="logo">↗</div><div><b>Invest+</b><small>Seu simulador financeiro</small></div></div><button class="headbtn" id="installBtn" onclick="installApp()" title="Instalar aplicativo" style="display:none">＋</button><button class="headbtn" onclick="resetApp()">↺</button></header>
+<header>
+ <div class="brand"><div class="logo">↗</div><div><b>Invest+</b><small>Seu futuro em números</small></div></div>
+ <div class="actions"><button class="icon" id="install" style="display:none" onclick="installApp()">＋</button><button class="icon" onclick="toggleTheme()">◐</button></div>
+</header>
 
 <section id="home" class="view active">
-<h1 class="title">Faça seu dinheiro<br>crescer.</h1><p class="sub">Simule seu investimento de forma simples e veja o efeito dos juros compostos.</p>
-<div class="card">
-<h2>Escolha o investimento</h2>
-<div class="investtypes">
-<button class="type active" id="tCdi" onclick="choose('cdi')"><strong>CDB / CDI</strong><small>pós-fixado</small></button>
-<button class="type" id="tFixed" onclick="choose('fixed')"><strong>Taxa fixa</strong><small>personalizada</small></button>
-<button class="type" id="tSave" onclick="choose('save')"><strong>Poupança</strong><small>simulação</small></button>
-<button class="type" id="tCustom" onclick="choose('custom')"><strong>Personalizado</strong><small>defina a taxa</small></button>
-</div>
-<div id="cdiBox" style="margin-top:13px"><div class="field"><label>Percentual do CDI</label><div class="input"><b>% CDI</b><input id="cdiPct" value="101,5" inputmode="decimal"></div></div><div class="note">O CDI usado nesta versão é um valor informado por você. Atualize-o quando quiser; o app funciona totalmente offline.</div></div>
-<div id="rateBox" class="hidden"><div class="field"><label>Rentabilidade mensal</label><div class="input"><b>%</b><input id="customRate" value="1,00" inputmode="decimal"></div></div></div>
-</div>
-<div class="card">
-<h2>Seu plano</h2>
-<div class="row">
-<div class="field"><label>Valor inicial</label><div class="input"><b>R$</b><input id="initial" value="1000" inputmode="decimal"></div></div>
-<div class="field"><label>Aporte mensal</label><div class="input"><b>R$</b><input id="monthly" value="500" inputmode="decimal"></div></div>
-</div>
-<div class="row">
-<div class="field"><label>CDI / taxa anual</label><div class="input"><b>%</b><input id="cdiRate" value="14,65" inputmode="decimal"></div></div>
-<div class="field"><label>Prazo</label><div class="input"><input id="years" value="10" inputmode="numeric"><span style="color:var(--muted)">anos</span></div></div>
-</div>
-<div class="field"><label>Aporte</label><div class="segment"><button id="end" class="active" onclick="timing='end';toggleTiming()">Fim do mês</button><button id="start" onclick="timing='start';toggleTiming()">Início</button></div></div>
-<button class="primary" onclick="simulateMain()">Simular agora</button>
-</div>
+ <div class="hero"><h1>Faça seu dinheiro<br>crescer.</h1><p>Uma simulação simples para você enxergar o próximo passo.</p></div>
+ <div class="card">
+  <h2>Tipo de investimento</h2>
+  <div class="types">
+   <button class="type active" data-type="fixed" onclick="setType('fixed')"><strong>Taxa fixa</strong><small>Você define a taxa</small></button>
+   <button class="type" data-type="cdi" onclick="setType('cdi')"><strong>CDB / CDI</strong><small>Percentual do CDI</small></button>
+   <button class="type" data-type="save" onclick="setType('save')"><strong>Poupança</strong><small>Taxa mensal</small></button>
+   <button class="type" data-type="custom" onclick="setType('custom')"><strong>Personalizado</strong><small>Seu cenário</small></button>
+  </div>
+  <div id="fixedFields" style="margin-top:13px"><div class="field"><label>Taxa de juros</label><div class="input"><b>%</b><input id="rate" value="1,00" inputmode="decimal"></div></div></div>
+  <div id="cdiFields" class="hidden" style="margin-top:13px">
+   <div class="grid2"><div class="field"><label>% do CDI</label><div class="input"><b>%</b><input id="cdiPct" value="100" inputmode="decimal"></div></div><div class="field"><label>CDI anual</label><div class="input"><b>%</b><input id="cdiAnnual" value="14,65" inputmode="decimal"></div></div></div>
+   <div class="note">O CDI é variável. Digite a taxa que você quer usar na projeção.</div>
+  </div>
+  <div id="saveFields" class="hidden" style="margin-top:13px"><div class="field"><label>Taxa mensal</label><div class="input"><b>%</b><input id="saveRate" value="0,67" inputmode="decimal"></div></div></div>
+ </div>
+
+ <div class="card">
+  <h2>Quanto você vai investir?</h2>
+  <div class="grid2">
+   <div class="field"><label>Valor inicial</label><div class="input"><b>R$</b><input id="initial" value="10000" inputmode="decimal"></div></div>
+   <div class="field"><label>Aporte mensal</label><div class="input"><b>R$</b><input id="monthly" value="1000" inputmode="decimal"></div></div>
+  </div>
+  <div class="grid2">
+   <div class="field"><label>Prazo</label><div class="input"><input id="years" value="10" inputmode="decimal"><span style="color:var(--muted);font-size:11px">anos</span></div></div>
+   <div class="field"><label>Taxa informada</label><div class="segment"><button id="monthlyMode" class="active" onclick="setRateMode('monthly')">Mensal</button><button id="annualMode" onclick="setRateMode('annual')">Anual</button></div></div>
+  </div>
+  <div class="field"><label>Aporte</label><div class="segment"><button id="end" class="active" onclick="setTiming('end')">Fim do mês</button><button id="start" onclick="setTiming('start')">Início</button></div></div>
+  <button class="primary" onclick="runMain()">Simular meu investimento</button>
+ </div>
 </section>
 
-<section id="result" class="view">
-<h1 class="title">Seu resultado</h1><p class="sub">Uma visão rápida do que pode acontecer mantendo as premissas.</p><div id="resultContent"></div>
+<section id="result" class="view"><div class="hero"><h1>Seu resultado</h1><p>Veja onde seu dinheiro pode chegar.</p></div><div id="resultContent"></div></section>
+
+<section id="goals" class="view"><div class="hero"><h1>Metas financeiras</h1><p>Transforme um objetivo em um número mensal.</p></div>
+ <div class="card">
+  <div class="field"><label>Meta de patrimônio</label><div class="input"><b>R$</b><input id="goal" value="500000"></div></div>
+  <div class="grid2"><div class="field"><label>Valor inicial</label><div class="input"><b>R$</b><input id="gInitial" value="10000"></div></div><div class="field"><label>Taxa mensal</label><div class="input"><b>%</b><input id="gRate" value="1"></div></div></div>
+  <div class="field"><label>Prazo</label><div class="input"><input id="gYears" value="10"><span style="color:var(--muted);font-size:11px">anos</span></div></div>
+  <button class="primary" onclick="calcGoal()">Quanto preciso investir?</button><button class="secondary" onclick="calcTime()">Quanto tempo preciso?</button>
+ </div><div id="goalContent"></div>
 </section>
 
-<section id="goal" class="view">
-<h1 class="title">Minha meta</h1><p class="sub">Descubra o aporte mensal necessário para chegar ao patrimônio desejado.</p>
-<div class="card"><div class="field"><label>Patrimônio desejado</label><div class="input"><b>R$</b><input id="goalValue" value="1000000"></div></div><div class="row"><div class="field"><label>Valor inicial</label><div class="input"><b>R$</b><input id="goalInitial" value="1000"></div></div><div class="field"><label>Prazo</label><div class="input"><input id="goalYears" value="10"><span style="color:var(--muted)">anos</span></div></div></div><div class="field"><label>Rentabilidade mensal</label><div class="input"><b>%</b><input id="goalRate" value="1"></div></div><button class="primary" onclick="goalCalc()">Calcular minha meta</button></div><div id="goalContent"></div>
+<section id="compare" class="view"><div class="hero"><h1>Compare cenários</h1><p>Pequenas mudanças podem alterar bastante o resultado.</p></div>
+ <div class="card">
+  <div class="grid2">
+   <div><h3>Cenário A</h3><div class="field"><label>Aporte mensal</label><div class="input"><b>R$</b><input id="aM" value="500"></div></div><div class="field"><label>Taxa mensal</label><div class="input"><b>%</b><input id="aR" value="1"></div></div></div>
+   <div><h3>Cenário B</h3><div class="field"><label>Aporte mensal</label><div class="input"><b>R$</b><input id="bM" value="800"></div></div><div class="field"><label>Taxa mensal</label><div class="input"><b>%</b><input id="bR" value="0,9"></div></div></div>
+  </div>
+  <div class="grid2"><div class="field"><label>Valor inicial</label><div class="input"><b>R$</b><input id="cmpI" value="1000"></div></div><div class="field"><label>Prazo</label><div class="input"><input id="cmpY" value="10"><span style="color:var(--muted);font-size:11px">anos</span></div></div></div>
+  <button class="primary" onclick="compare()">Comparar cenários</button>
+ </div><div id="compareContent"></div>
 </section>
 
-<section id="compare" class="view">
-<h1 class="title">Comparar</h1><p class="sub">Veja como pequenas mudanças no aporte ou na taxa alteram o resultado.</p>
-<div class="card"><div class="compare"><div><h3>Cenário A</h3><div class="field"><label>Aporte mensal</label><div class="input"><b>R$</b><input id="aM" value="500"></div></div><div class="field"><label>Taxa mensal</label><div class="input"><b>%</b><input id="aR" value="1"></div></div></div><div><h3>Cenário B</h3><div class="field"><label>Aporte mensal</label><div class="input"><b>R$</b><input id="bM" value="800"></div></div><div class="field"><label>Taxa mensal</label><div class="input"><b>%</b><input id="bR" value="0,9"></div></div></div></div><div class="row" style="margin-top:9px"><div class="field"><label>Inicial</label><div class="input"><b>R$</b><input id="cmpI" value="1000"></div></div><div class="field"><label>Prazo</label><div class="input"><input id="cmpY" value="10"><span style="color:var(--muted)">anos</span></div></div></div><button class="primary" onclick="compareCalc()">Comparar</button></div><div id="compareContent"></div>
-</section>
+<section id="history" class="view"><div class="hero"><h1>Histórico</h1><p>Suas últimas simulações ficam neste aparelho.</p></div><div class="card"><div id="historyContent"></div><button class="secondary" onclick="clearHistory()">Apagar histórico</button></div></section>
 
-<nav class="bottom"><button class="nav active" onclick="show('home',this)"><span>⌂</span>Início</button><button class="nav" onclick="show('result',this);simulateMain()"><span>◔</span>Resultado</button><button class="nav" onclick="show('goal',this)"><span>◎</span>Metas</button><button class="nav" onclick="show('compare',this)"><span>⇄</span>Comparar</button></nav>
+<nav class="bottom">
+ <button class="nav active" onclick="show('home',this)"><span>⌂</span>Início</button>
+ <button class="nav" onclick="show('result',this)"><span>◔</span>Resultado</button>
+ <button class="nav" onclick="show('goals',this)"><span>◎</span>Metas</button>
+ <button class="nav" onclick="show('compare',this)"><span>⇄</span>Comparar</button>
+ <button class="nav" onclick="show('history',this)"><span>▤</span>Histórico</button>
+</nav>
 </div>
+
+<div id="toast" class="toast"></div>
+<div id="loader" class="loader"><div class="calcbox"><div class="spinner"></div><b>Calculando sua projeção…</b></div></div>
+
 <script>
-let type='cdi',timing='end',last=null;
-const $=id=>document.getElementById(id),n=id=>{let x=parseFloat(String($(id).value).replace(/\./g,'').replace(',','.'));return isFinite(x)?x:0};
-const money=x=>Number(x||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
-const pct=x=>Number(x||0).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';
-function choose(x){type=x;['cdi','fixed','save','custom'].forEach(k=>{$('t'+k[0].toUpperCase()+k.slice(1)).classList.toggle('active',k===x)});$('cdiBox').classList.toggle('hidden',x!=='cdi');$('rateBox').classList.toggle('hidden',!(x==='fixed'||x==='custom'));if(x==='save'){$('rateBox').classList.remove('hidden');$('customRate').value='0,67'}}
-function show(id,btn){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));$(id).classList.add('active');document.querySelectorAll('.nav').forEach(v=>v.classList.remove('active'));btn.classList.add('active');if(id==='result'&&!last)simulateMain()}
-function toggleTiming(){$('end').classList.toggle('active',timing==='end');$('start').classList.toggle('active',timing==='start')}
-function simulate(initial,monthly,r,months){let b=initial,inv=initial,p=[b],i=[inv];for(let m=1;m<=months;m++){if(timing==='start'){b+=monthly;inv+=monthly}b*=1+r;if(timing==='end'){b+=monthly;inv+=monthly}p.push(b);i.push(inv)}return{b,inv,interest:b-inv,p,i}}
-function mainRate(){if(type==='cdi'){let cdi=Math.max(0,n('cdiRate'))/100;let pc=Math.max(0,n('cdiPct'))/100;return Math.pow(1+cdi,1/12)-1}if(type==='save')return Math.max(0,n('customRate'))/100;return Math.max(0,n('customRate'))/100}
-function simulateMain(){let months=Math.max(1,Math.round(n('years')*12)),x=simulate(Math.max(0,n('initial')),Math.max(0,n('monthly')),mainRate(),months);last=x;show('result',document.querySelectorAll('.nav')[1]);renderMain(x)}
-function renderMain(x){let invested=x.inv,interest=x.interest,acc=invested?interest/invested*100:0;let typeName=type==='cdi'?(n('cdiPct')+'% do CDI'):type==='save'?'Poupança':'Taxa personalizada';$('resultContent').innerHTML=`<section class="result"><small>Patrimônio projetado</small><div class="big">${money(x.b)}</div><div class="stats"><div><small>Você investiu</small><b>${money(invested)}</b></div><div><small>Rendimentos</small><b>${money(interest)}</b></div></div></section><div class="kpis"><div class="kpi"><small>Rentabilidade acumulada</small><strong class="green">${pct(acc)}</strong></div><div class="kpi"><small>Investimento</small><strong>${typeName}</strong></div></div><section class="card" style="margin-top:12px"><h2>Crescimento</h2><div class="chart"><canvas id="cv"></canvas></div><div class="legend"><span><i class="dot"></i>Patrimônio</span><span><i class="dot dot2"></i>Investido</span></div></section><section class="card"><h2>Composição</h2><div class="bar"><i style="width:${Math.min(100,invested/x.b*100)}%"></i><i style="width:${Math.max(0,interest/x.b*100)}%"></i></div><div class="split"><span>Capital <b>${money(invested)}</b></span><span>Juros <b>${money(interest)}</b></span></div><div class="note">A simulação usa a taxa informada como constante durante todo o período. Na prática, CDI, inflação, impostos e taxas podem mudar.</div></section>`;draw(x.p,x.i)}
-function draw(a,b){let c=$('cv'),d=devicePixelRatio||1,w=c.clientWidth,h=c.clientHeight;c.width=w*d;c.height=h*d;let q=c.getContext('2d');q.scale(d,d);let max=Math.max(...a,1),X=i=>8+(w-16)*i/(a.length-1||1),Y=v=>h-12-(h-25)*v/max;q.strokeStyle='#e5ebe7';for(let k=1;k<5;k++){let y=7+(h-25)*k/5;q.beginPath();q.moveTo(0,y);q.lineTo(w,y);q.stroke()}function line(z,l){q.beginPath();z.forEach((v,i)=>i?q.lineTo(X(i),Y(v)):q.moveTo(X(i),Y(v)));q.strokeStyle=l?'#91d5ae':'#0b7954';q.lineWidth=l?3:4;q.setLineDash(l?[6,5]:[]);q.stroke();q.setLineDash([])}line(b,true);line(a,false)}
-function goalCalc(){let goal=Math.max(0,n('goalValue')),initial=Math.max(0,n('goalInitial')),m=Math.max(1,Math.round(n('goalYears')*12)),r=Math.max(0,n('goalRate'))/100;let aport=r?Math.max(0,(goal-initial*Math.pow(1+r,m))*r/(Math.pow(1+r,m)-1)):Math.max(0,(goal-initial)/m);let s=simulate(initial,aport,r,m);$('goalContent').innerHTML=`<section class="result"><small>Aporte mensal necessário</small><div class="big">${money(aport)}</div><div class="stats"><div><small>Meta</small><b>${money(goal)}</b></div><div><small>Juros</small><b>${money(s.interest)}</b></div></div></section><section class="card"><div class="goalbox"><small>Projeção da meta</small><div class="progress"><i></i></div><div class="big">${money(s.b)}</div><p class="note">Resultado matemático com ${pct(r*100)} ao mês durante ${n('goalYears')} anos.</p></div></section>`}
-function compareCalc(){let m=Math.max(1,Math.round(n('cmpY')*12)),i=Math.max(0,n('cmpI')),a=simulate(i,n('aM'),n('aR')/100,m),b=simulate(i,n('bM'),n('bR')/100,m),d=b.b-a.b;$('compareContent').innerHTML=`<section class="card"><div class="compare"><div><small>Cenário A</small><h2>${money(a.b)}</h2><small>Juros: ${money(a.interest)}</small></div><div><small>Cenário B</small><h2>${money(b.b)}</h2><small>Juros: ${money(b.interest)}</small></div></div><div class="note">Diferença final: <b>${money(Math.abs(d))}</b>. A comparação não determina qual investimento é melhor; ela mostra o efeito dos parâmetros escolhidos.</div></section>`}
-let deferredPrompt=null;
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;const b=$("installBtn");if(b)b.style.display="block"});
-async function installApp(){if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;$("installBtn").style.display="none"}
-window.addEventListener("appinstalled",()=>{const b=$("installBtn");if(b)b.style.display="none"});
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("service-worker.js").catch(()=>{}));
-function resetApp(){location.reload()}
-window.addEventListener('resize',()=>{if(last&&$('cv'))draw(last.p,last.i)})
+let type="fixed",timing="end",rateMode="monthly",last=null,deferredPrompt=null;
+const $=id=>document.getElementById(id);
+const num=id=>{let s=String($(id).value||"0").trim().replace(/\./g,"").replace(",",".");let n=parseFloat(s);return Number.isFinite(n)?n:0};
+const money=n=>Number(n||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+const pct=n=>Number(n||0).toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2})+"%";
+function toast(t){$("toast").textContent=t;$("toast").classList.add("show");clearTimeout(window._toast);window._toast=setTimeout(()=>$("toast").classList.remove("show"),2400)}
+function show(id,btn){document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));$(id).classList.add("active");document.querySelectorAll(".nav").forEach(x=>x.classList.remove("active"));btn.classList.add("active");if(id==="history")renderHistory();scrollTo({top:0,behavior:"smooth"})}
+function toggleTheme(){document.body.classList.toggle("amoled");localStorage.setItem("theme",document.body.classList.contains("amoled")?"amoled":"light");toast(document.body.classList.contains("amoled")?"Tema AMOLED ativado":"Tema claro ativado")}
+if(localStorage.getItem("theme")==="amoled")document.body.classList.add("amoled");
+function setType(t){type=t;document.querySelectorAll(".type").forEach(b=>b.classList.toggle("active",b.dataset.type===t));$("fixedFields").classList.toggle("hidden",!(t==="fixed"||t==="custom"));$("cdiFields").classList.toggle("hidden",t!=="cdi");$("saveFields").classList.toggle("hidden",t!=="save");toast(t==="cdi"?"CDI selecionado":"Modo alterado")}
+function setRateMode(m){rateMode=m;$("monthlyMode").classList.toggle("active",m==="monthly");$("annualMode").classList.toggle("active",m==="annual")}
+function setTiming(t){timing=t;$("end").classList.toggle("active",t==="end");$("start").classList.toggle("active",t==="start")}
+function monthlyRate(){if(type==="cdi"){let c=num("cdiAnnual")/100,p=num("cdiPct")/100;return Math.pow(1+c,1/12)-1}if(type==="save")return num("saveRate")/100;let r=num("rate")/100;return rateMode==="annual"?Math.pow(1+r,1/12)-1:r}
+function simulate(I,M,r,months){let b=I,inv=I,p=[b],i=[inv];for(let m=1;m<=months;m++){if(timing==="start"){b+=M;inv+=M}b*=1+r;if(timing==="end"){b+=M;inv+=M}p.push(b);i.push(inv)}return{b,inv,interest:b-inv,p,i}}
+async function runMain(){let years=num("years");if(years<=0){toast("Informe um prazo maior que zero.");return}$("loader").classList.add("show");await new Promise(r=>setTimeout(r,650));let x=simulate(Math.max(0,num("initial")),Math.max(0,num("monthly")),Math.max(0,monthlyRate()),Math.max(1,Math.round(years*12)));last=x;saveHistory({date:new Date().toLocaleString("pt-BR"),name:type==="cdi"?"CDI":type==="save"?"Poupança":type==="fixed"?"Taxa fixa":"Personalizado",final:x.b});renderResult(x);$("loader").classList.remove("show");show("result",document.querySelectorAll(".nav")[1]);toast("Simulação concluída ✓")}
+function renderResult(x){let gain=x.inv?x.interest/x.inv*100:0;let name=type==="cdi"?num("cdiPct")+"% do CDI":type==="save"?"Poupança":type==="fixed"?"Taxa fixa":"Personalizado";$("resultContent").innerHTML=`
+<div class="resultHero"><small>Patrimônio projetado</small><div class="amount">${money(x.b)}</div><div class="stats"><div><small>Total investido</small><strong>${money(x.inv)}</strong></div><div><small>Rendimentos</small><strong>${money(x.interest)}</strong></div></div></div>
+<div class="kpis"><div class="kpi"><small>Rentabilidade sobre o capital</small><strong class="green">${pct(gain)}</strong></div><div class="kpi"><small>Estratégia</small><strong>${name}</strong></div></div>
+<section class="card" style="margin-top:11px"><h2>Evolução do patrimônio</h2><div class="chart"><canvas id="chart"></canvas></div><div class="legend"><span><i class="dot"></i>Patrimônio</span><span><i class="dot blue"></i>Capital investido</span></div></section>
+<section class="card"><h2>De onde vem o resultado?</h2><div class="bar"><i class="capital" style="width:${x.b?Math.min(100,x.inv/x.b*100):0}%"></i><i class="gain" style="width:${x.b?Math.max(0,x.interest/x.b*100):0}%"></i></div><div class="split"><span>Capital <strong>${money(x.inv)}</strong></span><span>Juros <strong>${money(x.interest)}</strong></span></div><div class="note">É uma projeção matemática. Taxas reais, CDI, impostos, inflação e condições de mercado podem mudar.</div></section>
+<section class="card"><h2>Resumo por ano</h2>${annualTable(x)}</section>`;
+drawChart(x.p,x.i)}
+function annualTable(x){let s='<table class="table"><tr><th>Ano</th><th>Investido</th><th>Patrimônio</th></tr>';for(let k=12;k<x.p.length;k+=12)s+=`<tr><td>${k/12}</td><td>${money(x.i[k])}</td><td>${money(x.p[k])}</td></tr>`;let k=x.p.length-1;if(k%12!==0)s+=`<tr><td>${Math.ceil(k/12)}</td><td>${money(x.i[k])}</td><td>${money(x.p[k])}</td></tr>`;return s+"</table>"}
+function drawChart(a,b){let c=$("chart");if(!c)return;let w=c.clientWidth,h=c.clientHeight,d=devicePixelRatio||1;c.width=w*d;c.height=h*d;let q=c.getContext("2d");q.scale(d,d);let max=Math.max(...a,1),X=i=>8+(w-16)*i/(a.length-1||1),Y=v=>h-12-(h-25)*v/max;let css=getComputedStyle(document.body);q.strokeStyle=css.getPropertyValue("--line");q.lineWidth=1;for(let k=1;k<5;k++){let y=7+(h-25)*k/5;q.beginPath();q.moveTo(0,y);q.lineTo(w,y);q.stroke()}function line(arr,color,dash,width){q.beginPath();arr.forEach((v,i)=>i?q.lineTo(X(i),Y(v)):q.moveTo(X(i),Y(v)));q.strokeStyle=color;q.lineWidth=width;q.setLineDash(dash?[5,5]:[]);q.stroke();q.setLineDash([])}line(b,"#4ba3ff",true,2);line(a,css.getPropertyValue("--green"),false,3)}
+function saveHistory(x){let h=JSON.parse(localStorage.getItem("investHistory")||"[]");h.unshift(x);localStorage.setItem("investHistory",JSON.stringify(h.slice(0,15)))}
+function renderHistory(){let h=JSON.parse(localStorage.getItem("investHistory")||"[]");$("historyContent").innerHTML=h.length?`<table class="table"><tr><th>Data</th><th>Tipo</th><th>Resultado</th></tr>${h.map(x=>`<tr><td>${x.date}</td><td>${x.name}</td><td>${money(x.final)}</td></tr>`).join("")}</table>`:'<div class="empty">Nenhuma simulação salva ainda.</div>'}
+function clearHistory(){localStorage.removeItem("investHistory");renderHistory();toast("Histórico apagado")}
+function calcGoal(){let G=num("goal"),I=num("gInitial"),m=Math.max(1,Math.round(num("gYears")*12)),r=num("gRate")/100;if(G<=I){toast("Sua meta já foi atingida.");return}let a=r?Math.max(0,(G-I*Math.pow(1+r,m))*r/(Math.pow(1+r,m)-1)):(G-I)/m;$("goalContent").innerHTML=`<div class="resultHero"><small>Aporte mensal necessário</small><div class="amount">${money(a)}</div><div class="stats"><div><small>Meta</small><strong>${money(G)}</strong></div><div><small>Prazo</small><strong>${num("gYears")} anos</strong></div></div></div>`;toast("Meta calculada ✓")}
+function calcTime(){let G=num("goal"),I=num("gInitial"),r=num("gRate")/100,M=num("aM")||500;if(G<=I){toast("Sua meta já foi atingida.");return}let m=r?Math.ceil(Math.log((G*r+M)/(I*r+M))/Math.log(1+r)):Math.ceil((G-I)/M);if(!isFinite(m)||m<0){toast("Ajuste os valores da meta.");return}$("goalContent").innerHTML=`<div class="resultHero"><small>Tempo estimado com ${money(M)}/mês</small><div class="amount">${(m/12).toFixed(1)} anos</div><div class="stats"><div><small>Meses</small><strong>${m}</strong></div><div><small>Aporte</small><strong>${money(M)}</strong></div></div></div>`;toast("Prazo calculado ✓")}
+function compare(){let m=Math.max(1,Math.round(num("cmpY")*12)),I=num("cmpI"),a=simulate(I,num("aM"),num("aR")/100,m),b=simulate(I,num("bM"),num("bR")/100,m);$("compareContent").innerHTML=`<section class="card"><div class="grid2"><div><small>Cenário A</small><h2>${money(a.b)}</h2><small>Juros: ${money(a.interest)}</small></div><div><small>Cenário B</small><h2>${money(b.b)}</h2><small>Juros: ${money(b.interest)}</small></div></div><div class="note">Diferença entre os patrimônios finais: <b>${money(Math.abs(b.b-a.b))}</b>.</div></section>`;toast("Comparação concluída ✓")}
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;$("install").style.display="block"});
+async function installApp(){if(!deferredPrompt){toast("No Chrome: menu ⋮ → Adicionar à tela inicial.");return}deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;$("install").style.display="none"}
+if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(()=>{}));
+window.addEventListener("resize",()=>{if(last&&$("chart"))drawChart(last.p,last.i)});
 </script>
 </body>
 </html>

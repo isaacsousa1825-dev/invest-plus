@@ -1,11 +1,12 @@
 {
-  "name": "Invest+ — Calculadora de Investimentos",
+  "name": "Invest+ — Seu futuro em números",
   "short_name": "Invest+",
-  "description": "Calculadora de investimentos com juros compostos, CDI, metas e comparação.",
-  "start_url": "./index.html",
+  "description": "Calculadora de investimentos moderna, simples e offline.",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#f5f7f6",
-  "theme_color": "#0b7653",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "orientation": "portrait",
   "lang": "pt-BR",
   "icons": [
